@@ -1,75 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halovéa — AI Text & Viral Content Studio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdfdfd;
-      margin: 0;
-      padding: 20px;
-      color: #111;
-      line-height: 1.6;
-    }
-    h1 {
-      text-align: center;
-      color: #ff007f;
-    }
-    p {
-      margin: 10px 0;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 8px 0;
-      font-size: 1.1em;
-    }
-    .button {
-      padding: 12px 20px;
-      border-radius: 8px;
-      color: #fff;
-      text-decoration: none;
-      display: inline-block;
-      margin: 5px;
-      font-weight: bold;
-    }
-    .paypal {
-      background-color: #0070ba;
-    }
-    .cashapp {
-      background-color: #00c244;
-    }
-    .center {
-      text-align: center;
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halovéa — AI Text & Viral Content Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family:'Montserrat',sans-serif; background: linear-gradient(135deg,#ffe0f0,#fff9e6); color:#111; }
+header { text-align:center; padding:50px 20px; background:linear-gradient(90deg,#ff007f,#ff77aa); color:#fff; font-size:2.5em; font-weight:700; text-shadow:2px 2px 5px #00000044; animation: float 2s ease-in-out infinite alternate; }
+@keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
+main { max-width:900px; margin:auto; text-align:center; padding:20px; }
+button { padding:15px 30px; margin:10px; border-radius:15px; font-weight:bold; border:none; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; font-size:1em; }
+button:hover { transform:scale(1.05); box-shadow:0 6px 20px #00000033; }
+.free-btn { background:#ff77aa; color:#fff; }
+.paypal-btn { background:#0070ba; color:#fff; }
+.cash-btn { background:#00c244; color:#fff; }
+.price-table { display:flex; flex-wrap:wrap; justify-content:center; margin:30px 0; gap:20px; }
+.price-card { background:#fff0ff88; border-radius:20px; padding:20px; width:250px; box-shadow:1px 1px 15px #00000022; transition: transform 0.3s; }
+.price-card:hover { transform:scale(1.05); }
+.price-title { font-weight:700; font-size:1.4em; margin-bottom:10px; }
+.price-value { font-size:1.6em; font-weight:700; margin-bottom:15px; }
+#output { margin-top:20px; padding:20px; background:#fff0ff88; border-radius:15px; box-shadow:1px 1px 8px #00000022; min-height:100px; font-size:1.2em; }
+footer { text-align:center; padding:25px; font-size:0.9em; color:#555; }
+.premium-content { display:none; margin-top:30px; padding:20px; background:linear-gradient(135deg,#ffe0f0,#fff5e6); border-radius:15px; box-shadow:1px 1px 10px #00000022; text-align:left; }
+.premium-content ul { padding-left:20px; }
+</style>
 </head>
 <body>
 
-  <h1>Halovéa — AI Text & Viral Content Studio</h1>
+<header>Halovéa — AI Text & Viral Content Studio</header>
 
-  <p>Instantly create flirty replies, savage comebacks, viral captions, jokes, scripts, and trending content. Sound bold, funny, and unforgettable — copy, paste, and shine with no creative block or wasted time.</p>
+<main>
+  <p style="font-size:1.2em; margin:20px 0;">Instantly create flirty replies, savage comebacks, viral captions, jokes, and scripts. Bold, funny, and unforgettable — no creative blocks, no wasted time!</p>
 
-  <h2>Features</h2>
-  <ul>
-    <li>🔥 Flirty replies & clever comebacks instantly</li>
-    <li>🎯 Viral captions for social media</li>
-    <li>😂 Trending jokes & memes ready to post</li>
-    <li>📝 Scripts, story ideas, and quick content</li>
-    <li>⚡ Works fast — no creative blocks, no delays</li>
-  </ul>
-
-  <h2>Support Halovéa</h2>
-  <p>If you love what we do, support us through your preferred method:</p>
-  <div class="center">
-    <a href="https://www.paypal.com/paypalme/haley_russell13" target="_blank" class="button paypal">PayPal</a>
-    <a href="https://cash.app/$Halovea" target="_blank" class="button cashapp">Cash App</a>
+  <div>
+    <button class="free-btn" onclick="generateSample()">🎁 Free Sample</button>
   </div>
+
+  <div class="price-table">
+    <div class="price-card">
+      <div class="price-title">Starter</div>
+      <div class="price-value">$0</div>
+      <p>Try a random sample instantly</p>
+      <button class="free-btn" onclick="generateSample()">Use Now</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-title">Pro</div>
+      <div class="price-value">$5</div>
+      <p>Full generator access</p>
+      <button class="paypal-btn" onclick="unlockPayPal()">PayPal</button>
+      <button class="cash-btn" onclick="unlockCashApp()">Cash App</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-title">Premium</div>
+      <div class="price-value">$10</div>
+      <p>Full access + priority support</p>
+      <button class="paypal-btn" onclick="unlockPayPal()">PayPal</button>
+      <button class="cash-btn" onclick="unlockCashApp()">Cash App</button>
+    </div>
+  </div>
+
+  <div id="output">Your sample content will appear here...</div>
+
+  <div class="premium-content" id="premiumContent">
+    <h3>🎉 Premium Content Unlocked!</h3>
+    <p>Welcome! You now have full access to the AI Text & Viral Content Generator:</p>
+    <ul>
+      <li>🔥 Flirty replies & clever comebacks</li>
+      <li>🎯 Viral captions for social media</li>
+      <li>😂 Trending jokes & memes ready to post</li>
+      <li>📝 Scripts, story ideas, and quick content</li>
+      <li>⚡ Works fast — no creative blocks</li>
+      <li>💡 Priority access to new features</li>
+    </ul>
+  </div>
+</main>
+
+<footer>Made with ❤️ by Halovéa | Support us via PayPal or Cash App</footer>
+
+<script>
+const sampleContent = [
+  "Flirty: 'Are you a magician? Because whenever I look at you, everyone else disappears.'",
+  "Savage: 'I don’t have the energy to pretend I like you today.'",
+  "Caption: 'Just dropped this vibe, catch it if you can.'",
+  "Joke: 'Why don’t skeletons fight each other? They don’t have the guts.'",
+  "Script idea: 'Two strangers meet at a coffee shop and swap secrets they shouldn’t.'"
+];
+
+function generateSample() {
+  const random = sampleContent[Math.floor(Math.random() * sampleContent.length)];
+  document.getElementById('output').innerText = random;
+}
+
+function unlockPayPal() {
+  window.location.href = "https://www.paypal.com/paypalme/haley_russell13";
+}
+function unlockCashApp() {
+  window.location.href = "https://cash.app/$Halovea";
+}
+
+document.querySelectorAll('.paypal-btn, .cash-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('premiumContent').style.display = 'block';
+    document.getElementById('output').innerText = "Full generator unlocked! Start creating content now.";
+  });
+});
+</script>
 
 </body>
 </html>
